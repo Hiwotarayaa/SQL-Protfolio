@@ -1,0 +1,10 @@
+✅ Use LIMIT for Faster Data Retrieval
+If you only need top 10 results, don't fetch everything.
+
+SELECT * FROM orders ORDER BY order_date DESC LIMIT 10; 
+
+
+📌 Why?
+✅ Loads data faster
+✅ Prevents memory overload
+
