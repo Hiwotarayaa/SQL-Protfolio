@@ -1,0 +1,35 @@
+name: Release SQL & Power BI Updates
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0, v2.1
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Zip SQL & Power BI Files
+      run: |
+        zip -r SQL-PowerBI-Release.zip Database_Schemas SQL_Queries PowerBI_Dashboards
+
+    - name: Generate Release Notes
+      run: |
+        echo "# SQL & Power BI Release 🚀" > RELEASE_NOTES.md
+        echo "**Included Files:**" >> RELEASE_NOTES.md
+        ls -R Database_Schemas SQL_Queries PowerBI_Dashboards >> RELEASE_NOTES.md
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}  # Uses tag like v1.0
+        name: "SQL & Power BI Release - ${{ github.ref_name }}"
+        body_path: RELEASE_NOTES.md
+        files: SQL-PowerBI-Release.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
