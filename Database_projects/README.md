@@ -18,6 +18,5 @@ git init
 git add .
 git commit -m "Initial commit - Added SQL database schema and queries"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/SQL-Portfolio.git
 git push -u origin main
 
