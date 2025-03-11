@@ -1,0 +1,13 @@
+✅ Avoid SELECT *
+Instead of:
+
+SELECT * FROM orders;
+
+Use, 
+
+SELECT order_id, customer_id, total_amount FROM orders;
+
+
+📌 Why?
+✅ Only retrieves necessary columns
+✅ Improves query efficiency
