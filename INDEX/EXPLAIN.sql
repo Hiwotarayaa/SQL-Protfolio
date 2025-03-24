@@ -1,4 +1,4 @@
-✅ Use EXPLAIN to Find Slow Queries
+✅ Use EXPLAIN to Find Slow Queries ( this is for MSSQL) not for SQL management 
 To check if your query is slow, run:
 
 
